@@ -3,6 +3,13 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Disable Solid Cable in production if environment variable is set
+  if ENV["SOLID_CABLE_DISABLED"] == "true"
+    Rails.application.config.skip_solid_cable = true
+    puts "Solid Cable disabled for this environment"
+  end
+
+
   # Code is not reloaded between requests.
   config.enable_reloading = false
 
