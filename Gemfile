@@ -24,7 +24,7 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
-gem "solid_cache"
+gem "solid_cache", group: [:development, :test]
 gem "solid_queue", group: [:development, :test]
 gem "solid_cable", group: [:development, :test]
 
