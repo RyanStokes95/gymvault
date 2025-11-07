@@ -1,18 +1,5 @@
 require_relative "boot"
 
-#Prevent Solid Cable from loading in production
-if ENV["RAILS_ENV"] == "production" || ENV["RACK_ENV"] == "production"
-  ENV["SOLID_CABLE_DISABLED"] = "true"
-  module SolidCable
-    class Engine < ::Rails::Engine
-      initializer "solid_cable.disable", before: :load_config_initializers do
-        puts "🧩 Solid Cable completely disabled for production"
-        Rails::Engine.subclasses.delete(self)
-      end
-    end
-  end
-end
-
 require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
@@ -38,4 +25,3 @@ module Gymvault
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
-
