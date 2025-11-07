@@ -15,7 +15,4 @@ test:
   database: gymvault_test
 
 production:
-  <<: *default
-  database: gymvault_production
-  username: <%= Rails.application.credentials.dig(:postgresql, :username) %>
-  password: <%= Rails.application.credentials.dig(:postgresql, :password) %>
+  url: <%= ENV["DATABASE_URL"] %>
