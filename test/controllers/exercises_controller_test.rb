@@ -2,6 +2,11 @@ require "test_helper"
 
 class ExercisesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    # Use the user fixture and sign in before every test
+    @user = users(:one)
+    sign_in @user
+
+    # Load one exercise fixture to use in tests
     @exercise = exercises(:one)
   end
 
@@ -20,7 +25,7 @@ class ExercisesControllerTest < ActionDispatch::IntegrationTest
       post exercises_url, params: { exercise: { name: @exercise.name, reps: @exercise.reps, sets: @exercise.sets, user_id: @exercise.user_id, weight: @exercise.weight } }
     end
 
-    assert_redirected_to exercise_url(Exercise.last)
+    assert_redirected_to exercises_url
   end
 
   test "should show exercise" do
@@ -35,7 +40,7 @@ class ExercisesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update exercise" do
     patch exercise_url(@exercise), params: { exercise: { name: @exercise.name, reps: @exercise.reps, sets: @exercise.sets, user_id: @exercise.user_id, weight: @exercise.weight } }
-    assert_redirected_to exercise_url(@exercise)
+    assert_redirected_to exercises_url
   end
 
   test "should destroy exercise" do
