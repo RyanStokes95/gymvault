@@ -1,16 +1,53 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Exercises" %>
 
-<h1>Exercises</h1>
+<div class="container mt-4">
 
-<div id="exercises">
-  <% @exercises.each do |exercise| %>
-    <%= render exercise %>
-    <p>
-      <%= link_to "Show this exercise", exercise %>
-    </p>
+  <% if notice.present? %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= notice %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
   <% end %>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="fw-bold">My Exercises</h1>
+    <%= link_to "New Exercise", new_exercise_path, class: "btn btn-primary" %>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body p-0">
+      <table class="table table-hover mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Name</th>
+            <th>Weight</th>
+            <th>Sets</th>
+            <th>Reps</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @exercises.each do |exercise| %>
+            <tr>
+              <td><%= exercise.name %></td>
+              <td><%= exercise.weight %> kg</td>
+              <td><%= exercise.sets %></td>
+              <td><%= exercise.reps %></td>
+              <td class="text-end">
+                <%= link_to "Show", exercise, class: "btn btn-sm btn-outline-secondary" %>
+                <%= link_to "Edit", edit_exercise_path(exercise), class: "btn btn-sm btn-outline-primary" %>
+                <%= link_to "Delete", exercise, 
+                      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                      class: "btn btn-sm btn-outline-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
 
-<%= link_to "New exercise", new_exercise_path %>
+

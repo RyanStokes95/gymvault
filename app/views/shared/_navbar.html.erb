@@ -1,23 +1,47 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 shadow-sm">
   <div class="container">
+
     <!-- App name / logo -->
-    <a class="navbar-brand fw-bold" href="/">GymVault</a>
+    <%= link_to "GymVault", root_path, class: "navbar-brand fw-bold" %>
 
-    <!-- Right side: login/logout links -->
-    <div class="ms-auto">
-      <% if user_signed_in? %>
-        <!-- Show current user’s email -->
-        <span class="me-3 text-muted"><%= current_user.email %></span>
+    <!-- Mobile menu toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <!-- Logout button -->
-        <%= button_to "Logout", destroy_user_session_path,
-              method: :delete,
-              class: "btn btn-outline-danger btn-sm" %>
-      <% else %>
-        <!-- Login + Signup links -->
-        <%= link_to "Login", new_user_session_path, class: "btn btn-outline-primary btn-sm me-2" %>
-        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-sm" %>
-      <% end %>
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+
+        <% if user_signed_in? %>
+          <li class="nav-item d-flex align-items-center me-3 text-muted">
+            <%= current_user.email %>
+          </li>
+
+          <li class="nav-item">
+            <%= button_to "Logout",
+                  destroy_user_session_path,
+                  method: :delete,
+                  class: "btn btn-outline-danger btn-sm" %>
+          </li>
+
+        <% else %>
+          <li class="nav-item me-2">
+            <%= link_to "Login",
+                  new_user_session_path,
+                  class: "btn btn-outline-primary btn-sm" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Sign Up",
+                  new_user_registration_path,
+                  class: "btn btn-primary btn-sm" %>
+          </li>
+        <% end %>
+
+      </ul>
     </div>
+
   </div>
 </nav>
+
