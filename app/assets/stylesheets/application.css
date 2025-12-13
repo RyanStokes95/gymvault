@@ -3,7 +3,6 @@
  *= require_self
  */
 
-/* ---------- CSS Reset (lightweight) ---------- */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,14 +17,12 @@ body {
   line-height: 1.6;
 }
 
-/* ---------- Layout ---------- */
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 1.5rem;
 }
 
-/* ---------- Navbar ---------- */
 .navbar {
   background: #ffffff;
   border-bottom: 1px solid #e5e7eb;
@@ -47,9 +44,9 @@ body {
   align-items: center;
 }
 
-/* ---------- Buttons ---------- */
 .btn {
   display: inline-block;
+  margin: 10px 0;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   border: 1px solid transparent;
@@ -62,6 +59,15 @@ body {
 .btn-primary {
   background-color: #2563eb;
   color: #ffffff;
+}
+
+.btn-delete {
+  background-color: #e05454;
+  color: #ffffff;
+}
+
+.btn-delete:hover {
+  background-color: #d71f1f;
 }
 
 .btn-primary:hover {
@@ -79,7 +85,6 @@ body {
   color: #374151;
 }
 
-/* ---------- Cards ---------- */
 .card {
   background: #ffffff;
   border-radius: 8px;
@@ -88,7 +93,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* ---------- Forms ---------- */
 .form-group {
   margin-bottom: 1rem;
 }
@@ -111,13 +115,22 @@ input:focus {
   border-color: #2563eb;
 }
 
-/* ---------- Alerts ---------- */
 .notice {
   background: #ecfeff;
   color: #155e75;
   padding: 0.75rem;
   border-radius: 6px;
   margin-bottom: 1rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.button-group form {
+  margin: 0;
 }
 
 
