@@ -1,5 +1,7 @@
 require "test_helper"
 
+#creates a new exercise and checks if it is saved and retrieved correctly from the database
+#Created here
 class ExercisesDatabaseTest < ActionDispatch::IntegrationTest
   test "exercise is saved and retrieved from the database" do
     exercise = Exercise.create!(
@@ -7,9 +9,11 @@ class ExercisesDatabaseTest < ActionDispatch::IntegrationTest
       weight: 80,
       sets: 3,
       reps: 10,
-      user: users(:one) # uses fixture user
+      #uses user1 fixture
+      user: users(:one)
     )
 
+    # Check to see if the exercise was saved correctly
     found_exercise = Exercise.find_by(name: "Bench Press")
 
     assert_not_nil found_exercise

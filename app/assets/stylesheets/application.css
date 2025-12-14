@@ -3,6 +3,11 @@
  *= require_self
  */
 
+ /*
+ This file contains global styles for the application
+ Utilised already in place bootstrap class names
+ */
+
 * {
   box-sizing: border-box;
   margin: 0;
