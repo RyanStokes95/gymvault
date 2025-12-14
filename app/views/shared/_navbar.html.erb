@@ -1,15 +1,18 @@
+# Use of partial, is shared across multiple views
 <nav class="navbar">
   <a href="/">GymVault</a>
 
+  #If user signed in, show email
   <div class="navbar-right">
     <% if user_signed_in? %>
       <span><%= current_user.email %></span>
 
+      #Login or Logout depending on user session status
       <%= button_to "Logout",
             destroy_user_session_path,
             method: :delete,
             class: "btn btn-outline" %>
-    <% else %>
+      <% else %>
       <%= link_to "Login",
             new_user_session_path,
             class: "btn btn-outline" %>
